@@ -30,17 +30,18 @@ npm run lint     # oxlint
 │   └── guns/               # product images
 └── src/
     ├── main.jsx            # entry, mounts <App/>
-    ├── App.jsx             # app shell: tab state, header/nav/content/footer
+    ├── App.jsx             # app shell: tab + cart state, header/nav/content/footer
     ├── App.css             # app shell styles
     ├── index.css           # global styles
     ├── components/
-    │   ├── Header.jsx      # brand + nav
+    │   ├── Header.jsx      # brand + nav + cart badge
     │   ├── GunCard.jsx     # single product card
     │   └── Footer.jsx
     ├── data/
     │   └── guns.js         # dummy product data
     └── pages/
-        ├── Catalog.jsx     # product grid
+        ├── Catalog.jsx     # product grid with search, type filter, sort
+        ├── Cart.jsx        # cart: quantity controls + total
         ├── About.jsx
         └── Contact.jsx
 ```

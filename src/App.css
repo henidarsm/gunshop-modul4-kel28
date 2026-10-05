@@ -14,8 +14,9 @@
 .header {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   justify-content: space-between;
-  gap: 16px;
+  gap: 8px 16px;
   padding: 14px 24px;
   background: var(--paper);
   border-bottom: 1px solid var(--line);
@@ -34,7 +35,7 @@
 
 .nav {
   display: flex;
-  gap: 24px;
+  gap: 20px;
 }
 
 .nav-link {
@@ -115,6 +116,13 @@
 
 .card {
   display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid var(--line);
+}
+
+.card:hover {
+  border-color: var(--brass);
 }
 
 .card-btn {
@@ -123,22 +131,45 @@
   flex-direction: column;
   gap: 4px;
   padding: 0 0 14px;
-  background: #fff;
-  border: 1px solid var(--line);
+  background: none;
+  border: none;
   font: inherit;
+  color: inherit;
   text-align: left;
   cursor: pointer;
 }
 
-.card-btn:hover {
-  border-color: var(--brass);
+/* Fixed 4:3 frame so images of any aspect ratio leave card height untouched. */
+.card-frame {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #e4e8ea;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 10px;
 }
 
 .card-img {
+  display: block;
   width: 100%;
-  height: auto;
-  margin-bottom: 10px;
-  border-bottom: 1px solid var(--line);
+  height: 100%;
+  object-fit: contain;
+}
+
+.add-btn {
+  margin: 0 14px 14px;
+  padding: 8px 12px;
+  border: 1px solid var(--ink);
+  background: none;
+  font: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.add-btn:hover {
+  background: var(--ink);
+  color: var(--paper);
 }
 
 .card .name,
@@ -208,6 +239,163 @@
 .popup-close:hover {
   background: var(--ink);
   color: var(--paper);
+}
+
+.cart-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.badge {
+  min-width: 20px;
+  padding: 0 6px;
+  border-radius: 10px;
+  background: var(--brass);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 20px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 32px;
+}
+
+.search,
+.filter,
+.sort-btn {
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.9rem;
+}
+
+.search {
+  flex: 1 1 200px;
+  min-width: 0;
+}
+
+.sort {
+  display: flex;
+}
+
+.sort-btn {
+  cursor: pointer;
+  min-width: 80px;
+}
+
+.sort-btn + .sort-btn {
+  border-left: none;
+}
+
+.sort-btn.active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+
+.empty {
+  color: var(--steel);
+}
+
+.cart-list {
+  list-style: none;
+  margin: 24px 0 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+
+.cart-row {
+  display: grid;
+  grid-template-columns: 80px 1fr auto auto auto;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.cart-thumb {
+  margin: 0;
+  border: 1px solid var(--line);
+}
+
+.cart-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.qty {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+.qty button {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+}
+
+.qty button:hover {
+  background: var(--paper);
+}
+
+.qty-value {
+  min-width: 28px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.cart-subtotal {
+  min-width: 72px;
+  text-align: right;
+}
+
+.cart-remove {
+  border: none;
+  background: none;
+  color: var(--steel);
+  font: inherit;
+  font-size: 0.85rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.cart-remove:hover {
+  color: var(--ink);
+}
+
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+@media (max-width: 560px) {
+  .cart-row {
+    grid-template-columns: 64px 1fr auto;
+  }
+
+  .cart-subtotal,
+  .cart-remove {
+    grid-column: 2 / -1;
+    justify-self: end;
+  }
 }
 
 .footer {

@@ -1,17 +1,23 @@
 import { useRef } from 'react'
 
-function GunCard({ gun }) {
+function GunCard({ gun, inCart, onAdd }) {
   const popup = useRef(null)
 
   return (
     <li className="card">
       <button className="card-btn" onClick={() => popup.current.showModal()}>
-        <img className="card-img" src={gun.image} alt="" width="120" height="90" />
+        <span className="card-frame">
+          <img className="card-img" src={gun.image} alt="" width="120" height="90" />
+        </span>
         <span className="name display">{gun.name}</span>
         <span className="type">
           {gun.type} · {gun.caliber}
         </span>
         <span className="price">${gun.price.toLocaleString()}</span>
+      </button>
+
+      <button type="button" className="add-btn" onClick={() => onAdd(gun.name)}>
+        Add to cart{inCart > 0 && ` (${inCart})`}
       </button>
 
       <dialog
